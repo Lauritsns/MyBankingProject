@@ -1,4 +1,6 @@
 ﻿using DocumentFormat.OpenXml.InkML;
+using DocumentFormat.OpenXml.Office.CustomUI;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Mvc;
 using MyBankingProject.DBAcces;
 using MyBankingProject.Models;
@@ -9,8 +11,8 @@ namespace MyBankingProject.Controllers
     public class HomeController : Controller
     {
         
-        private BankingContext bankingContext = new BankingContext();
-
+        private readonly BankingContext bankingContext = new();
+        private readonly String loginCustomer = "MinMail@gmail.com";
 
         public HomeController()
         {
@@ -28,11 +30,25 @@ namespace MyBankingProject.Controllers
 
 
         }
-
         public IActionResult Index()
         {
-            return View();
+            List<Customer> customers = bankingContext.Customers.Where(customer => customer.Email == loginCustomer).ToList();
+            String? customerCPR = customers[0].CPR;
+            String? customerName = customers[0].Name;
+            try
+            {
+                if(customerCPR != null && customerName != null)
+                {
+                    List<Account> accountData = bankingContext.Accounts.Where(account => account.CPR == customerCPR).ToList();
+                    ViewBag.Accounts = accountData;
+                    ViewBag.CustomerName = customerName;
+                }
+            } catch (Exception error) { Console.WriteLine(error.StackTrace + "No logged in customer"); } 
+           
+            
+            return View("Index");
+        }
+            
         }
 
     }
-}

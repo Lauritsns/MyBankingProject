@@ -1,5 +1,48 @@
 ﻿
+<link rel="stylesheet" href="~/css/HomePage.css" />
 
-@{
-    <h1>MyBankingProject</h1>
-}
+<div id="Container">
+
+    <div id="Left">
+        <div id="LeftTop">
+            <div id="ProfilePictureDiv">
+                <img src="~/Images/ProfilePicture.jpg" alt="Picture" id="ProfilePicture"/>
+            </div>
+            <div id="CustomerNameDiv">
+                <h1 id="CustomerName">@ViewBag.CustomerName</h1>
+            </div>
+        </div>
+        <div id="LeftBottom">
+
+        </div>
+    </div>
+
+    <div id="Right">
+        <div id="TopRight">
+        </div>
+
+        <div id="BottomRight">
+            <h1>Account List</h1>
+            <ul>
+                @foreach (var account in ViewBag.Accounts)
+                {
+                    <li>@account.AccountName</li>
+                    <li>Balance: @account.Saldo</li>
+                }
+            </ul>
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+    
+
+
+
+
+
+
+

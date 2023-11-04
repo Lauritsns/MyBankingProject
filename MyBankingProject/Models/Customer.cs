@@ -36,5 +36,6 @@ namespace MyBankingProject.Models
             this.City = city;
             this.Email = email;
         }
+
     }
 }
