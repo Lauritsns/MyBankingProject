@@ -10,9 +10,9 @@ namespace MyBankingProject.Models
         [Range(1, 50000)]
         public double Amount { get; set; }
         [Required]
-        public string Sender { get; set; }
+        public string SenderAccountNumber { get; set; }
         [Required]
-        public string Reciver { get; set; }
+        public string ReciverAccountNumber { get; set; }
         [Required]
         public DateTime StartTransactionDate { get; set; }
         [Required]
@@ -22,12 +22,12 @@ namespace MyBankingProject.Models
 
         public Transaction() { }
 
-        public Transaction(int id, double amount, string sender, string reciver, TransactionTypeEnum transactionType)
+        public Transaction(int id, double amount, string senderAccountnumber, string reciverAccountNumber, TransactionTypeEnum transactionType)
         {
             Id = id;
             Amount = amount;
-            Sender = sender;
-            Reciver = reciver;
+            SenderAccountNumber = senderAccountnumber;
+            ReciverAccountNumber = reciverAccountNumber;
             StartTransactionDate = DateTime.Now;
             EndTransactionDate = (transactionType == TransactionTypeEnum.Fixed) ? null : DateTime.Now.AddDays(2);
             TransactionType = (transactionType == TransactionTypeEnum.Fixed) ? "Fixed" : "Normal";  

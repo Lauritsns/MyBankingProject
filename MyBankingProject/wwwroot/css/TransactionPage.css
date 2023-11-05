@@ -1,13 +1,13 @@
 ﻿body, html {
     height: 100%;
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
 
 #HomeContainer {
-    display:flex;
-    height:100%;
-    width:100%;
+    display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 #Left {
@@ -32,13 +32,11 @@
 #ProfilePicture {
     height: 65%;
     width: 65%;
-    padding-top:10%;
-
-    
+    padding-top: 10%;
 }
 
 #CustomerNameDiv {
-    display:felx;
+    display: felx;
     height: 100%;
     width: 60%;
 }
@@ -67,17 +65,18 @@
     border-color: #437b43;
     justify-content: center;
 }
-#HomeButtonDiv:hover, #AccountsButtonDiv:hover, #TransactionsButtonDiv:hover {
-    display: flex;
-    height: 10%;
-    width: 100%;
-    padding-top: 15px;
-    border-bottom: solid;
-    background-color:#386638;
-    border-color: #000000;
-    justify-content: center;
-    cursor:default;
-}
+
+    #HomeButtonDiv:hover, #AccountsButtonDiv:hover, #TransactionsButtonDiv:hover {
+        display: flex;
+        height: 10%;
+        width: 100%;
+        padding-top: 15px;
+        border-bottom: solid;
+        background-color: #386638;
+        border-color: #000000;
+        justify-content: center;
+        cursor: default;
+    }
 
 #HomeButton, #AccountsButton, #TransactionsButton {
     text-align: center;
@@ -116,49 +115,70 @@
     align-items: center;
 }
 
-#AccountDiv {
-    display: flex;
-    width: 80%;
-    height: 15%;
-    justify-content: center;
-    padding-top: 8%
+#MakeTransactionDiv{
+
 }
 
-#AccountNameDiv {
-    display: flex;
-    width: 60%;
-    justify-content: center;
-    border: solid;
-    border-width: 3px;
-    border-color: #437b43;
-    flex-direction: columm;
-    align-items: center;
+#AmountDiv {
+
 }
 
-#AccountBalanceDiv {
-    display: flex;
-    width: 40%;
-    border: solid;
-    border-left: white;
-    border-color: #437b43;
-    border-width: 3px;
-    background-color: #7cd27c;
-    flex-direction: columm;
-    justify-content: center;
-    align-items: center;
+#Amount {
+
 }
 
-#AccountName {
-    width: fit-content;
-    height: fit-content;
-    font-size: x-large;
-    font-weight: bolder
+#ChooseSenderAccount {
+
 }
 
-#AccountBalance {
-    width: fit-content;
-    height: fit-content;
-    font-size: x-large;
-    font-weight: bolder
+#SenderAccount {
+
 }
 
+#ReciverDiv {
+
+}
+
+#ReciverAccountNumber {
+
+}
+
+#ChooseReciverAccount {
+
+}
+
+#ReciverAccount {
+
+}
+
+#TransactionDiv {
+
+}
+
+#AccountNameSenderDiv {
+   
+}
+
+#AccountNameSender {
+
+}
+
+#AccountNameReciverDiv {
+
+}
+
+#AccountNameReciver {
+
+}
+
+#AccountNumberReciver {
+
+}
+
+#AmountSpendDiv {
+
+}
+
+#AmountSpend {
+
+}
