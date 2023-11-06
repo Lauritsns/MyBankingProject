@@ -1,0 +1,272 @@
+﻿body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#TransactionsContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#Left {
+    height: 100%;
+    width: 30%;
+}
+
+#LeftTop {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    flex-direction: row;
+    background-color: #437b43;
+}
+
+#ProfilePictureDiv {
+    height: 100%;
+    width: 40%;
+    text-align: center;
+}
+
+#ProfilePicture {
+    height: 65%;
+    width: 65%;
+    padding-top: 10%;
+}
+
+#CustomerNameDiv {
+    display: felx;
+    height: 100%;
+    width: 60%;
+}
+
+#CustomerName {
+    height: 100%;
+    width: 100%;
+    padding-top: 11%;
+}
+
+#LeftBottom {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    background-color: #7cd27c;
+    flex-direction: column;
+    text-align: center;
+}
+
+#AccountsButtonDiv {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    padding-top: 15px;
+    border-bottom: solid;
+    border-color: #437b43;
+    justify-content: center;
+}
+
+    #AccountsButtonDiv:hover {
+        display: flex;
+        height: 10%;
+        width: 100%;
+        padding-top: 15px;
+        border-bottom: solid;
+        background-color: #386638;
+        border-color: #000000;
+        justify-content: center;
+        cursor: default;
+    }
+
+#HomeButtonAnchor, #TransactionsButtonAnchor {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    padding-top: 15px;
+    border-bottom: solid;
+    border-color: #437b43;
+    justify-content: center;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+    #HomeButtonAnchor:hover, #TransactionsButtonAnchor:hover {
+        display: flex;
+        height: 10%;
+        width: 100%;
+        padding-top: 15px;
+        border-bottom: solid;
+        background-color: #386638;
+        border-color: #000000;
+        justify-content: center;
+        cursor: default;
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+#HomeButton, #AccountsButton, #TransactionsButton {
+    text-align: center;
+}
+
+#Right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+}
+
+
+#TopRight {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    background-color: #437b43;
+    justify-content: center;
+    align-items: center;
+}
+
+#HeaderText {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+}
+
+#BottomRight {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    background-color: white;
+    margin-top: 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+#MakeTransactionDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 6%;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+#MakeTransactionForm {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+#AmountDiv {
+    display: flex;
+    padding-right: 5%
+}
+
+
+#Amount {
+    height: 100%;
+    width: 100%;
+    border: solid;
+    border-radius: 8%;
+    font-size: large;
+}
+
+#ChooseSenderAccount {
+    height: 100%
+}
+
+#SenderAccount {
+    height: 100%;
+    padding-left: 5px;
+    border-radius: 8%;
+    font-size: medium;
+}
+
+#ReciverDiv {
+    display: flex;
+}
+
+#ReciverAccountNumber {
+    height: 100%;
+    width: 100%;
+    border: solid;
+    border-radius: 8%;
+    font-size: large;
+}
+
+#ChooseReciverAccount {
+    height: 100%;
+}
+
+#ReciverAccount {
+    height: 100%;
+    padding-left: 5px;
+    border-radius: 8%;
+    margin-right: 30px;
+    font-size: medium;
+}
+
+#TransforButtonDiv {
+    display: flex;
+    height: 150%;
+    width: 150%;
+}
+
+#TransferButton {
+    height: 100%;
+    width: fit-content;
+    font-size: x-large;
+}
+
+#TransactionDiv {
+    display: flex;
+    width: 80%;
+    height: 7%;
+    border: solid;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#AccountNameSenderDiv {
+    display: flex;
+    height: 100%;
+    width: 40%;
+    align-items: center;
+    border-right: solid;
+    justify-content: center;
+}
+
+#AccountNameSender {
+    font-size: large;
+    font-weight: bolder;
+}
+
+#AccountNameReciverDiv {
+    display: flex;
+    width: 30%;
+    border-right: solid;
+    align-items: center;
+    justify-content: center;
+}
+
+#AccountNameReciver {
+    font-size: large;
+    font-weight: bolder;
+}
+
+#AccountNumberReciver {
+    font-size: large;
+}
+
+#AmountSpendDiv {
+    display: flex;
+    width: 30%;
+    border-right: solid;
+    align-items: center;
+    justify-content: center;
+}
+
+#AmountSpend, AmountRecived {
+    font-size: large;
+}
+
+
