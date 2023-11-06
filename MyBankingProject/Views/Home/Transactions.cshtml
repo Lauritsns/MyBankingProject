@@ -13,15 +13,20 @@
                 </div>
             </div>
             <div id="LeftBottom">
-                <div id="HomeButtonDiv">
-                    <h2 id="HomeButton"> Home </h2>
-                </div>
+                <a href="/" id="HomeButtonAnchor">
+                    <div id="HomeButtonDiv">
+                        <h2 id="HomeButton"> Home </h2>
+                    </div>
+                </a>
                 <div id="AccountsButtonDiv">
                     <h2 id="AccountsButton"> Accounts </h2>
                 </div>
-                <div id="TransactionsButtonDiv">
-                    <h2 id="TransactionsButton"> Transactions </h2>
-                </div>
+                <a href="/Transactions" id="TransactionsButtonAnchor">
+                    <div id="TransactionsButtonDiv">
+                        <h2 id="TransactionsButton"> Transactions </h2>
+                    </div>
+                </a>
+                
             </div>
         </div>
 
@@ -32,58 +37,90 @@
 
             <div id="BottomRight">
                 <div id="MakeTransactionDiv">
-                    <form action="/MakeTransaction">
+                    @using (Html.BeginForm("MakeTransaction", "Home", FormMethod.Post, new { id = "MakeTransactionForm" }))
+                        {
                         <div id="AmountDiv">
-                            <label for="Amount">Amount:</label>
-                            <input type="text" id="Amount" name="Amount">
+                            <input type="number" id="Amount" name="Amount" placeholder="Amount">
+                            <div id="ChooseSenderAccount">
+                                <select name="SenderAccount" id="SenderAccount">
+                                    <option value="None">From</option>
+                                    <option value="None">None</option>
+                                    @foreach (var account in ViewBag.Accounts)
+                                    {
+                                        <option value="@account.AccountName">@account.AccountName</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
-                        <div id="ChooseSenderAccount">
-                            <select name="Account" id="SenderAccount">
-                            @foreach (var account in ViewBag.Accounts)
-                            {
-                                    <option value="@account.AccountName">@account.AccountName</option>
-                            }
-                            </select>
-                        </div>
+
                         <div id="ReciverDiv">
-                            <label for="ReciverAccountNumber">Account Number:</label>
-                            <input type="text" id="ReciverAccountNumber" name="ReciverAccountNumber">
+                            <input type="number" id="ReciverAccountNumber" name="ReciverAccountNumber" placeholder="Account Number">
                         </div>
                         <div id="ChooseReciverAccount">
-                            <select name="Account" id="ReciverAccount">
-                                <option value="None">None</option>
+                            <select name="ReciverAccount" id="ReciverAccount">
+                                <option value="None">To</option>
                                 @foreach (var account in ViewBag.Accounts)
                                 {
                                     <option value="@account.AccountName">@account.AccountName</option>
                                 }
                             </select>
                         </div>
-                    </form>
+                        <div id="TransferButtonDiv">
+                            <input type="submit" value="Submit" id="TransferButton">
+                        </div>
+                    }
                 </div>
 
-                @foreach (var account in ViewBag.Accounts)
+                @foreach (var transaction in ViewBag.Transactions)
                 {
                     <div id="TransactionDiv">
-                        @foreach (var transaction in ViewBag.Transactions)
-                        {
                             <div id="AccountNameSenderDiv">
-                                <p id="AccountNameSender">@account.AccountName</p>
-                            </div>
-                            <div id="AccountNameReciverDiv">
-                                <p id="AccountNameReciver">@account.AccountName</p>
-                                <p id="AccountNumberReciver">@transaction.ReciverAccountNumber</p>
-                            </div>
-                            <div id="AmountSpendDiv">
-                                @if(transaction.SenderAccountNumber != account.AccountNumber)
+                            @if (transaction.SenderType == "Myself" )
+                            {
+                                @foreach(var element in ViewBag.Accounts)
                                 {
-                                    <p id="AmountSpend">+@transaction.Amount</p>
+                                    if(element.AccountNumber == transaction.SenderAccountNumber)
+                                    {
+                                        <p id="AccountNameSender">@element.AccountName</p>
+                                    }
+                                } 
+                            }
+                            @if (transaction.SenderType == "Stranger")
+                            {
+                                <p id="AccountNameSender">Account Number: @transaction.SenderAccountNumber</p>
+                            }
+                                 
+                            </div>
+                        <div id="AccountNameReciverDiv">
+                            @{
+                                if (transaction.ReciverType == "Myself")
+                                {
+                                        @foreach (var element in ViewBag.Accounts)
+                                    {
+                                        if (element.AccountNumber == transaction.ReciverAccountNumber)
+                                        {
+                                                <p id="AccountNumberReciver">@element.AccountName</p>
+                                        }
+                                    }      
                                 }
-                                else
+                                if (transaction.ReciverType == "Stranger")
                                 {
-                                    <p id="AmountSpend">-@transaction.Amount</p>
-                                }  
+                                        <p id="AccountNumberReciver">Account Number: @transaction.ReciverAccountNumber</p>
+                                }
+                            }
+                        </div>
+
+                            <div id="AmountSpendDiv">
+                            
+                                @if (transaction.ReciverType == "Myself")
+                                {
+                                    <p id="AmountSpend">+@transaction.Amount Kr.</p>
+                                }
+                                @if (transaction.ReciverType == "Stranger")
+                                {
+                                    <p id="AmountRecived">-@transaction.Amount Kr.</p>
+                                }
                             </div>
-                        }
                     </div>
                 }
             </div>

@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-#HomeContainer {
+#TransactionsContainer {
     display: flex;
     height: 100%;
     width: 100%;
@@ -56,7 +56,7 @@
     text-align: center;
 }
 
-#HomeButtonDiv, #AccountsButtonDiv, #TransactionsButtonDiv {
+#AccountsButtonDiv {
     display: flex;
     height: 10%;
     width: 100%;
@@ -66,7 +66,7 @@
     justify-content: center;
 }
 
-    #HomeButtonDiv:hover, #AccountsButtonDiv:hover, #TransactionsButtonDiv:hover {
+    #AccountsButtonDiv:hover {
         display: flex;
         height: 10%;
         width: 100%;
@@ -76,6 +76,32 @@
         border-color: #000000;
         justify-content: center;
         cursor: default;
+    }
+
+#HomeButtonAnchor, #TransactionsButtonAnchor {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    padding-top: 15px;
+    border-bottom: solid;
+    border-color: #437b43;
+    justify-content: center;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+    #HomeButtonAnchor:hover, #TransactionsButtonAnchor:hover {
+        display: flex;
+        height: 10%;
+        width: 100%;
+        padding-top: 15px;
+        border-bottom: solid;
+        background-color: #386638;
+        border-color: #000000;
+        justify-content: center;
+        cursor: default;
+        color: inherit;
+        text-decoration: inherit;
     }
 
 #HomeButton, #AccountsButton, #TransactionsButton {
@@ -115,70 +141,132 @@
     align-items: center;
 }
 
-#MakeTransactionDiv{
+#MakeTransactionDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 6%;
+    justify-content: center;
+    margin-bottom: 50px;
+}
 
+#MakeTransactionForm {
+    display: flex;
+    height: 100%;
+    justify-content: center;
 }
 
 #AmountDiv {
-
+    display: flex;
+    padding-right: 5%
 }
 
-#Amount {
 
+#Amount {
+    height: 100%;
+    width: 100%;
+    border: solid;
+    border-radius: 8%;
+    font-size: large;
 }
 
 #ChooseSenderAccount {
-
+    height: 100%
 }
 
 #SenderAccount {
-
+    height: 100%;
+    padding-left: 5px;
+    border-radius: 8%;
+    font-size: medium;
 }
 
 #ReciverDiv {
-
+    display: flex;
 }
 
 #ReciverAccountNumber {
-
+    height: 100%;
+    width: 100%;
+    border: solid;
+    border-radius: 8%;
+    font-size: large;
 }
 
 #ChooseReciverAccount {
-
+    height: 100%;
 }
 
 #ReciverAccount {
+    height: 100%;
+    padding-left: 5px;
+    border-radius: 8%;
+    margin-right: 30px;
+    font-size: medium;
+}
 
+#TransforButtonDiv {
+    display: flex;
+    height: 150%;
+    width: 150%;
+}
+
+#TransferButton {
+    height: 100%;
+    width: fit-content;
+    font-size: x-large;
 }
 
 #TransactionDiv {
-
+    display: flex;
+    width: 80%;
+    height: 7%;
+    border: solid;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 #AccountNameSenderDiv {
-   
+    display: flex;
+    height: 100%;
+    width: 40%;
+    align-items: center;
+    border-right: solid;
+    justify-content: center;
 }
 
 #AccountNameSender {
-
+    font-size: large;
+    font-weight: bolder;
 }
 
 #AccountNameReciverDiv {
-
+    display: flex;
+    width: 30%;
+    border-right: solid;
+    align-items: center;
+    justify-content: center;
 }
 
 #AccountNameReciver {
-
+    font-size: large;
+    font-weight: bolder;
 }
 
 #AccountNumberReciver {
-
+    font-size: large;
 }
 
 #AmountSpendDiv {
-
+    display: flex;
+    width: 30%;
+    border-right: solid;
+    align-items: center;
+    justify-content: center;
 }
 
-#AmountSpend {
-
+#AmountSpend, AmountRecived {
+    font-size: large;
 }
+
+

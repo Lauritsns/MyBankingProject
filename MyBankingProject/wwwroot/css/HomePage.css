@@ -58,7 +58,7 @@
     text-align: center;
 }
 
-#HomeButtonDiv, #AccountsButtonDiv, #TransactionsButtonDiv {
+#AccountsButtonDiv {
     display: flex;
     height: 10%;
     width: 100%;
@@ -67,7 +67,7 @@
     border-color: #437b43;
     justify-content: center;
 }
-#HomeButtonDiv:hover, #AccountsButtonDiv:hover, #TransactionsButtonDiv:hover {
+#AccountsButtonDiv:hover {
     display: flex;
     height: 10%;
     width: 100%;
@@ -78,6 +78,32 @@
     justify-content: center;
     cursor:default;
 }
+
+#HomeButtonAnchor, #TransactionsButtonAnchor {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    padding-top: 15px;
+    border-bottom: solid;
+    border-color: #437b43;
+    justify-content: center;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+    #HomeButtonAnchor:hover, #TransactionsButtonAnchor:hover {
+        display: flex;
+        height: 10%;
+        width: 100%;
+        padding-top: 15px;
+        border-bottom: solid;
+        background-color: #386638;
+        border-color: #000000;
+        justify-content: center;
+        cursor: default;
+        color: inherit;
+        text-decoration: inherit;
+    }
 
 #HomeButton, #AccountsButton, #TransactionsButton {
     text-align: center;

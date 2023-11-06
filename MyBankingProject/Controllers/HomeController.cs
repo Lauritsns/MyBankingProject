@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.InkML;
 using DocumentFormat.OpenXml.Office.CustomUI;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Mvc;
 using MyBankingProject.DBAcces;
@@ -22,10 +23,10 @@ namespace MyBankingProject.Controllers
         {
             if (bankingContext.Accounts != null && bankingContext.Customers != null)
             {
-                bankingContext.Database.EnsureDeleted();
+                
                 bool created = bankingContext.Database.EnsureCreated();
             
-                if (created)
+                if (true)
                 {
                     
                     transactions = new List<Transaction>();
@@ -63,27 +64,63 @@ namespace MyBankingProject.Controllers
         [Route("/Transactions")]
         public ActionResult Transactions()
         {
-            ViewBag.Customer = customers[0];
-            ViewBag.Accounts = bankingContext.Accounts.Where(account => account.CPR == customerCPR).ToList(); ;
+            transactions.Clear();
+            ViewBag.CustomerName = customers[0].Name;
+            ViewBag.Accounts = bankingContext.Accounts.Where(account => account.CPR == customerCPR).ToList();
             foreach (var element in accountData)
             {
                 transactions.AddRange(bankingContext.Transactions.Where(transaction => transaction.SenderAccountNumber == element.AccountNumber).ToList());
                 transactions.AddRange(bankingContext.Transactions.Where(transaction => transaction.ReciverAccountNumber == element.AccountNumber).ToList());
             }
+
+            transactions.Sort((t1,t2) => t2.StartTransactionDate.CompareTo(t1.StartTransactionDate));
+
             ViewBag.Transactions = transactions;
             ViewBag.Header = "Transactions";
             return View("Transactions");
         }
 
 
+        [HttpPost]
+        [Route("/Transactions")]
+        public ActionResult MakeTransaction(IFormCollection form)
+        {
+            double amount = double.Parse(form["Amount"]);
+            Account senderAccount = accountData.Where(account => account.AccountName == form["SenderAccount"]).ToList()[0]; 
+            SenderReciverType myselfType = SenderReciverType.Myself;
+            SenderReciverType strangerType = SenderReciverType.Myself;
+            string reciverAccountNumber = form["ReciverAccountNumber"];
+            Account reciverAccount = accountData.Where(account => account.AccountName == form["ReciverAccount"]).ToList()[0]; 
+            TransactionTypeEnum normalTransactionType = TransactionTypeEnum.Normal;
+            Console.WriteLine(amount);
+            Console.WriteLine(senderAccount.AccountNumber);
+            Console.WriteLine(reciverAccount.AccountNumber);
+            Console.WriteLine(reciverAccountNumber);
+            if (reciverAccountNumber == "")
+            {
+                Console.WriteLine("Tom");
+                bankingContext.Add(new Transaction(amount, senderAccount.AccountNumber, myselfType, reciverAccount.AccountNumber, myselfType, normalTransactionType));
+                bankingContext.SaveChanges();
+            }
+            else if (reciverAccountNumber != "")
+            {
+                Console.WriteLine("Fuldt");
+                bankingContext.Add(new Transaction(amount, senderAccount.AccountNumber, myselfType, reciverAccountNumber, strangerType, normalTransactionType));
+                bankingContext.SaveChanges();
+            }
 
-
-
-
-
-
-
-            
+            return RedirectToAction("Transactions");
         }
+
+
+
+
+
+
+
+
+
+
+    }
 
     }

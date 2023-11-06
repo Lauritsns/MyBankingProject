@@ -17,7 +17,7 @@ namespace MyBankingProject.DBAcces
             modelBuilder.Entity<Customer>().HasData(new Customer[] { new Customer(-1, "Karl Superrig Mappedyr", "123456-7890", "OdinVej", "Silkeborg", "MinMail@gmail.com") });
             modelBuilder.Entity<Account>().HasData(new Account[] { new Account(1, "100000", "Salary", "098765-4321", 2000,  Account.AccountTypesEnum.PrivateCustomer) });
             modelBuilder.Entity<Customer>().HasData(new Customer[] { new Customer(1, "John", "098765-4321", "ThorsVej", "Silkeborg", "DinMail@gmail.com") });
-            modelBuilder.Entity<Transaction>().HasData(new Transaction[] { new Transaction(-1, 1000, "200000", "100000", TransactionTypeEnum.Normal) });
+            modelBuilder.Entity<Transaction>().HasData(new Transaction[] { new Transaction(-1, 1000, "100000", SenderReciverType.Stranger, "200001", SenderReciverType.Myself, TransactionTypeEnum.Normal) });
         }
             
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
